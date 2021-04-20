@@ -16,7 +16,7 @@
 <body>
 
 <?php
-include_once("db_connect.php");
+include_once("../db_connect.php");
 
 $sql = "SELECT item_ID, item_name, brand, phone_model, accessory_type, item_quantity FROM ffc_inventory";
 $result = $conn->query($sql);

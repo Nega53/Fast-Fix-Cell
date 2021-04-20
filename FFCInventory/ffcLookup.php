@@ -18,7 +18,7 @@
 </head>
 <body>
 <?php
-include_once("db_connect.php");
+include_once("../db_connect.php");
 
 //Form Input
 $item_ID = $conn->real_escape_string($_REQUEST['item_ID']);
@@ -56,7 +56,7 @@ $result = $conn->query($sql);
 <?php
 $conn->close();
 echo '<p><a href="ffcLookup.html">Look up another item</a></p>';
-echo '<p><a href="index.php">Home</a></p>';
+echo '<p><a href="../index.php">Home</a></p>';
 ?>
 </body>
 </html>

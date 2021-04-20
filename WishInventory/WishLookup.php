@@ -18,7 +18,7 @@
 </head>
 <body>
 <?php
-include_once("db_connect.php");
+include_once("../db_connect.php");
 
 //Form Input
 $customer_ID = $conn->real_escape_string($_REQUEST['customer_ID']);
@@ -48,7 +48,7 @@ $result = $conn->query($sql);
 $conn->close();
 echo '<p>PLACEHOLDER FOR DELETE OPTION</p>';
 echo '<p><a href="WishLookup.html">Look up another item</a></p>';
-echo '<p><a href="index.php">Home</a></p>';
+echo '<p><a href="../index.php">Home</a></p>';
 ?>
 </body>
 </html>

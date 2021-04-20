@@ -19,7 +19,7 @@
 <body>
 
 <?php
-include_once("db_connect.php");
+include_once("../db_connect.php");
 
 $sql = "SELECT customer_ID, location FROM ffc_wish_inventory";
 $result = $conn->query($sql);

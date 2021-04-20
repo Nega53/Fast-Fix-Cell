@@ -1,5 +1,5 @@
 <?php
-include_once("db_connect.php");
+include_once("../db_connect.php");
 
 //Form Input
 $item_ID = $conn->real_escape_string($_REQUEST['item_ID']);
@@ -17,7 +17,7 @@ if($conn->query($sql) === true){
     echo "<p>Item successfully inserted into database.</p>";
     echo "<p>Insert Another Item?</p>";
     echo '<p><a href="ffcInsert.html">Yes</a></p>';
-    echo '<p><a href="index.html">No</a></p>';
+    echo '<p><a href="../index.php">No</a></p>';
 } else{
     echo "Unable to execute $sql." . $conn->error;
 }
