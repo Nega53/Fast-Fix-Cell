@@ -10,7 +10,7 @@
         <div id="nav-placeholder"></div>
         <script>
             $(function(){
-            $("#nav-placeholder").load("../navbar.html");
+            $("#nav-placeholder").load("Wishnavbar.html");
             });
         </script>
     </div>
