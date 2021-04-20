@@ -1,6 +1,6 @@
 <?php
 include_once("../db_connect.php");
-include_once("WishLookup.php");
+include 'WishLookup.php';
 
 $sqld = "DELETE FROM ffc_wish_inventory WHERE customer_ID = '".$customer_ID."'";
 
