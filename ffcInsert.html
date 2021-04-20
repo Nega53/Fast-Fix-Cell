@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div id="nav">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <div id="nav-placeholder"></div>
+        <script>
+            $(function(){
+            $("#nav-placeholder").load("navbar.html");
+            });
+        </script>
+    </div>
+    <title>Fast Fix Cell Input Item Information</title>
+</head>
+<body>
+    <form action="ffcInsert.php" method="post" onkeydown="return event.key != 'Enter';">
+        <p>
+            <label for="ItemID">Barcode/QR Code:</label>
+            <input type="text" name="item_ID" id="ItemID">
+        </p>
+        <p>
+            <label for="ItemName">Item Name:</label>
+            <input type="text" name="item_name" id="ItemID">
+        </p>
+        <p>
+            <label for="Brand">Brand Name:</label>
+            <input type="text" name="brand" id="Brand">
+        </p>
+        <p>
+            <label for="PhoneModel">Phone Model:</label>
+            <input type="text" name="phone_model" id="PhoneModel">
+        </p>
+        <p>
+            <label for="AccessoryType">Type of Item:</label>
+            <input type="text" name="accessory_type" id="AccessoryType">
+        </p>
+        <p>
+            <label for="ItemQuantity">Quantity of Item:</label>
+            <input type="text" name="item_quantity" id="ItemQuantity">
+        </p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
