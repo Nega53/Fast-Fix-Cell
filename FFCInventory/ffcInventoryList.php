@@ -14,7 +14,8 @@
 <!-- FILTERING OPTION FOR EACH COLUMN
     HAVE AN ARRAY OF EACH COLUMN NAMES -->
 <?php include_once("../db_connect.php"); ?>
-<form action="ffcInventoryList.php">
+<?php $brandSel="" ?>
+<form action="ffcInventoryList.php" method="post">
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
         <?php
@@ -29,15 +30,26 @@
     <select name="ffcPhone" id="ffcPhone">
         <option value="" selected="selected">Phone Model</option>
         <?php
-            $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory";
-            $resP = $conn->query($sql2);
+            if(isset($_POST['ffcBrand'])){
+                $brandSel = $_POST['ffcBrand'];
+            }
+            $sql2;
+            $resP;
+
+            if(!empty($brandSel)){
+                $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory WHERE brand = '".$brandSel."'";
+                $resP = $conn->query($sql2);
+            }else{
+                $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory";
+                $resP = $conn->query($sql2);
+            }
 
             while($itemP = mysqli_fetch_assoc($resP)){
                 echo '<option value="'.$itemP['phone_model'].'">'.$itemP['phone_model'].'</option>';
             }
         ?>
     </select>
-    <select>
+    <select name="ffcAcc" id="ffcAcc">
         <option value="" selected="selected">Accessory Type</option>
         <?php
             $sql3 = "SELECT DISTINCT accessory_type FROM ffc_inventory";
@@ -60,30 +72,49 @@ $result = $conn->query($sql);
 
 $conn->close();
 ?>
+<?php
+    // $brand = "";
+    // $phone = "";
+    // $acc = "";
 
-<table id="InventoryTable" class="table table-striped table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Barcode/QR Code</th>
-            <th>Item Name</th>
-            <th>Phone Brand</th>
-            <th>Phone Model</th>
-            <th>Accessory Type</th>
-            <th>Item Quantity</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php while($items = mysqli_fetch_assoc($result)){?>
-            <tr id="<?php echo $items ['id']; ?>">
-                <td><?php echo $items['item_ID']; ?></td>
-                <td><?php echo $items['item_name']; ?></td>
-                <td><?php echo $items['brand']; ?></td>
-                <td><?php echo $items['phone_model']; ?></td>
-                <td><?php echo $items['accessory_type']; ?></td>
-                <td><?php echo $items['item_quantity']; ?></td>
+    // if(isset($_POST['ffcBrand'])){
+    //     $brand = $_POST['ffcBrand'];
+    // }
+    // if(isset($_POST['ffcPhone'])){
+    //     $phone = $_POST['ffcPhone'];
+    // }
+    // if(isset($_POST['ffcAcc'])){
+    //     $acc = $_POST['ffcAcc'];
+    // }
+
+    // if(!empty($brand)){
+
+    // }
+    
+?>
+    <table id="InventoryTable" class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Barcode/QR Code</th>
+                <th>Item Name</th>
+                <th>Phone Brand</th>
+                <th>Phone Model</th>
+                <th>Accessory Type</th>
+                <th>Item Quantity</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php while($items = mysqli_fetch_assoc($result)){?>
+                <tr id="<?php echo $items ['id']; ?>">
+                    <td><?php echo $items['item_ID']; ?></td>
+                    <td><?php echo $items['item_name']; ?></td>
+                    <td><?php echo $items['brand']; ?></td>
+                    <td><?php echo $items['phone_model']; ?></td>
+                    <td><?php echo $items['accessory_type']; ?></td>
+                    <td><?php echo $items['item_quantity']; ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </body>
 </html>
