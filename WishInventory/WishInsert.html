@@ -16,7 +16,7 @@
     <title>Wish Input Item Information</title>
 </head>
 <body>
-    <form action="WishInsert.php" method="post">
+    <form action="WishInsert.php" method="post" onkeydown="return event.key != 'Enter';">
         <p>
             <label for="CustomerID">Customer QR Code:</label>
             <input type="text" name="customer_ID" id="CustomerID">
