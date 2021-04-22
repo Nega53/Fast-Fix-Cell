@@ -45,7 +45,7 @@ $result = $conn->query($sql);
     </tbody>
 </table>
 <?php
-echo '<p><a href="WishDelete.php?customer_ID=<?php echo '.$_GET['customer_ID'].'; ?>">Delete Item from Database</a></p>';
+echo '<p><a href="WishDelete.php?customer_ID='.$_GET['customer_ID'].'">Delete Item from Database</a></p>';
 echo '<p><a href="WishLookup.html">Look up another item</a></p>';
 echo '<p><a href="../index.php">Home</a></p>';
 $conn->close();
