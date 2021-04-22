@@ -21,7 +21,8 @@
 include_once("../db_connect.php");
 
 //Form Input
-$GLOBALS[$customer_ID] = $conn->real_escape_string($_REQUEST['customer_ID']);
+$customer_ID = $conn->real_escape_string($_REQUEST['customer_ID']);
+$GLOBALS[$customer_ID] = $customer_ID; 
 
 //Attempt to fetch data from table
 $sql = "SELECT * FROM ffc_wish_inventory WHERE customer_ID = '".$customer_ID."'";
