@@ -18,12 +18,34 @@
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
         <?php
-        $sql1 = "SELECT DISTINCT brand FROM ffc_inventory";
-        $resB = $conn->query($sql1);
+            $sql1 = "SELECT DISTINCT brand FROM ffc_inventory";
+            $resB = $conn->query($sql1);
 
-        while($itemB = mysqli_fetch_assoc($resB)){
-            echo '<option value="'.$itemB['brand'].'">'.$itemB['brand'].'</option>';
-        }
+            while($itemB = mysqli_fetch_assoc($resB)){
+                echo '<option value="'.$itemB['brand'].'">'.$itemB['brand'].'</option>';
+            }
+        ?>
+    </select>
+    <select name="ffcPhone" id="ffcPhone">
+        <option value="" selected="selected">Phone Model</option>
+        <?php
+            $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory";
+            $resP = $conn->query($sql2);
+
+            while($itemP = mysqli_fetch_assoc($resP)){
+                echo '<option value="'.$itemP['phone_model'].'">'.$itemP['phone_model'].'</option>';
+            }
+        ?>
+    </select>
+    <select>
+        <option value="" selected="selected">Accessory Type</option>
+        <?php
+            $sql3 = "SELECT DISTINCT accessory_type FROM ffc_inventory";
+            $resA = $conn->query($sql3);
+
+            while($itemA = mysqli_fetch_assoc($resA)){
+                echo '<option value="'.$itemA['accessory_type'].'">'.$itemA['accessory_type'].'</option>';
+            }
         ?>
     </select>
 </form>
