@@ -2,7 +2,7 @@
 // include_once("../db_connect.php");
 
 //Edit variable since its not being passed
-echo "<p>$customer_ID</p>";
+echo "<p>'". $GLOBALS['customer_ID'] ."'</p>";
 
 // $sqld = "DELETE FROM ffc_wish_inventory WHERE customer_ID = '".$customer_ID."'";
 
