@@ -1,6 +1,5 @@
 <?php
 // include_once("../db_connect.php");
-include 'WishLookup.php';
 
 //Edit variable since its not being passed
 echo "<p>$customer_ID</p>";
