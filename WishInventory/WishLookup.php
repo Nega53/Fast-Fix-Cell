@@ -37,14 +37,10 @@ $result = $conn->query($sql);
     </thead>
     <tbody>
         <?php while($items = mysqli_fetch_assoc($result)){?>
-            <?php if(!empty($items)){ ?>
-                <tr id="<?php echo $items ['id']; ?>">
-                <td><?php echo $items['customer_ID']; ?></td>
-                <td><?php echo $items['location']; ?></td>
+            <tr id="<?php echo $items ['id']; ?>">
+            <td><?php echo $items['customer_ID']; ?></td>
+            <td><?php echo $items['location']; ?></td>
             </tr>
-            <?php }else{ ?>
-                <p>No items with that id found.</p>
-            <?php } ?>
         <?php } ?>
     </tbody>
 </table>

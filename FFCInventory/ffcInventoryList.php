@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="ffcArrays.php"></script>
 <div id="nav">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <div id="nav-placeholder"></div>
@@ -10,7 +11,20 @@
             $("#nav-placeholder").load("ffcnavbar.html");
             });
         </script>
-    </div>
+</div>
+<!-- FILTERING OPTION FOR EACH COLUMN
+    HAVE AN ARRAY OF EACH COLUMN NAMES -->
+<form action="ffcInventoryList.php">
+    <select name="ffcBrand" id="ffcBrand">
+        <option value="" selected="selected">Phone Brand</option>
+        <?php
+        foreach($brand as $item){
+            echo '<option value="'.$item.'">'.$item.'</option>';
+        }
+        ?>
+    </select>
+</form>
+<!-- -->
 <title>Fast Fix Cell Inventory List</title>
 </head>
 <body>
