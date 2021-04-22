@@ -15,7 +15,7 @@
     HAVE AN ARRAY OF EACH COLUMN NAMES -->
 <?php include_once("../db_connect.php"); ?>
 <form action="ffcInventoryList.php" method="post">
-    <select name="ffcBrand" id="ffcBrand">
+    <select name="ffcBrand" id="ffcBrand" method="post">
         <option value="" selected="selected">Phone Brand</option>
         <?php
             $sql1 = "SELECT DISTINCT brand FROM ffc_inventory";
