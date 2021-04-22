@@ -16,7 +16,7 @@
     <title>Wish Lookup Barcode/QR Code</title>
 </head>
 <body>
-    <form action="WishLookup.php" method="get">
+    <form action="WishLookup.php?customer_ID=<?php echo $_GET['customer_ID']; ?>" method="post">
         <label for="CustomerID">Barcode/QR Code:</label>
         <input type="text" name="customer_ID" id="CustomerID">
         <input type="submit" value="Submit">
