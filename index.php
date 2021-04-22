@@ -14,14 +14,14 @@
         </script>
     </div>
     <style>
-        p {
+        p, h2 {
             text-align: center;
         }
     </style>
     <title>Fast Fix Cell Inventory Server Site</title>
 </head>
 <body>
-    <p><h2><b>Fast Fix Cell Inventory System</b></h2></p>
+    <h2><b>Fast Fix Cell Inventory System</b></h2>
     <p>Inventory Site made to access the Fast Fix Cell Repair shop Database.</p>
 </body>
 </html>

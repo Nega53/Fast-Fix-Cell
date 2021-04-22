@@ -2,7 +2,6 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="ffcArrays.php"></script>
 <div id="nav">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <div id="nav-placeholder"></div>
@@ -14,12 +13,16 @@
 </div>
 <!-- FILTERING OPTION FOR EACH COLUMN
     HAVE AN ARRAY OF EACH COLUMN NAMES -->
+<?php include_once("../db_connect.php"); ?>
 <form action="ffcInventoryList.php">
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
         <?php
-        foreach($brand as $item){
-            echo '<option value="'.$item.'">'.$item.'</option>';
+        $sql1 = "SELECT DISTINCT brand FROM ffc_inventory";
+        $resB = $conn->query($sql1);
+
+        while($itemB = mysqli_fetch_assoc($resB)){
+            echo '<option value="'.$itemB.'">'.$itemB.'</option>';
         }
         ?>
     </select>
@@ -30,8 +33,6 @@
 <body>
 
 <?php
-include_once("../db_connect.php");
-
 $sql = "SELECT item_ID, item_name, brand, phone_model, accessory_type, item_quantity FROM ffc_inventory";
 $result = $conn->query($sql);
 
