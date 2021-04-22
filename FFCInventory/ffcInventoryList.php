@@ -15,10 +15,10 @@
     HAVE AN ARRAY OF EACH COLUMN NAMES -->
 <?php include_once("../db_connect.php"); ?>
 <form action="ffcInventoryList.php" method="post">
-    <select name="ffcBrand" id="ffcBrand" method="post">
+    <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
         <?php
-            $sql1 = "SELECT DISTINCT brand FROM ffc_inventory";
+            $sql1 = "SELECT DISTINCT brand FROM ffc_inventory ORDER BY brand";
             $resB = $conn->query($sql1);
 
             while($itemB = mysqli_fetch_assoc($resB)){
@@ -29,21 +29,8 @@
     <select name="ffcPhone" id="ffcPhone">
         <option value="" selected="selected">Phone Model</option>
         <?php
-            $brandSel = "";
-
-            if(isset($_POST['ffcBrand'])){
-                $brandSel = $_POST['ffcBrand'];
-            }
-            $sql2 = "";
-            $resP = "";
-
-            if(!empty($brandSel)){
-                $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory WHERE brand = '".$brandSel."'";
-                $resP = $conn->query($sql2);
-            }else{
-                $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory";
-                $resP = $conn->query($sql2);
-            }
+            $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory ORDER BY phone_model";
+            $resP = $conn->query($sql2);
 
             while($itemP = mysqli_fetch_assoc($resP)){
                 echo '<option value="'.$itemP['phone_model'].'">'.$itemP['phone_model'].'</option>';
@@ -53,7 +40,7 @@
     <select name="ffcAcc" id="ffcAcc">
         <option value="" selected="selected">Accessory Type</option>
         <?php
-            $sql3 = "SELECT DISTINCT accessory_type FROM ffc_inventory";
+            $sql3 = "SELECT DISTINCT accessory_type FROM ffc_inventory ORDER BY accessory_type";
             $resA = $conn->query($sql3);
 
             while($itemA = mysqli_fetch_assoc($resA)){
@@ -61,6 +48,7 @@
             }
         ?>
     </select>
+    <input name="filter" type="submit" value="Filter"/>
 </form>
 <!-- -->
 <title>Fast Fix Cell Inventory List</title>
@@ -68,7 +56,7 @@
 <body>
 
 <?php
-$sql = "SELECT item_ID, item_name, brand, phone_model, accessory_type, item_quantity FROM ffc_inventory";
+$sql = "SELECT item_ID, item_name, brand, phone_model, accessory_type, item_quantity FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
 $result = $conn->query($sql);
 
 $conn->close();
@@ -88,6 +76,7 @@ $conn->close();
     //     $acc = $_POST['ffcAcc'];
     // }
 
+    // //Filtering
     // if(!empty($brand)){
 
     // }
