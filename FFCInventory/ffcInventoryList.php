@@ -22,7 +22,7 @@
         $resB = $conn->query($sql1);
 
         while($itemB = mysqli_fetch_assoc($resB)){
-            echo '<option value="'.$itemB.'">'.$itemB.'</option>';
+            echo '<option value="'.$itemB['brand'].'">'.$itemB['brand'].'</option>';
         }
         ?>
     </select>
