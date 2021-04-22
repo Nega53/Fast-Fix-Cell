@@ -14,7 +14,6 @@
 <!-- FILTERING OPTION FOR EACH COLUMN
     HAVE AN ARRAY OF EACH COLUMN NAMES -->
 <?php include_once("../db_connect.php"); ?>
-<?php $brandSel="" ?>
 <form action="ffcInventoryList.php" method="post">
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
@@ -30,11 +29,13 @@
     <select name="ffcPhone" id="ffcPhone">
         <option value="" selected="selected">Phone Model</option>
         <?php
+            $brandSel = "";
+
             if(isset($_POST['ffcBrand'])){
                 $brandSel = $_POST['ffcBrand'];
             }
-            $sql2;
-            $resP;
+            $sql2 = "";
+            $resP = "";
 
             if(!empty($brandSel)){
                 $sql2 = "SELECT DISTINCT phone_model FROM ffc_inventory WHERE brand = '".$brandSel."'";
