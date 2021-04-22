@@ -45,10 +45,10 @@ $result = $conn->query($sql);
     </tbody>
 </table>
 <?php
-$conn->close();
 echo "<p><a href='WishDelete.php?customer_ID=".$items['customer_ID']."'>Delete Item from Database</a></p>";
 echo '<p><a href="WishLookup.html">Look up another item</a></p>';
 echo '<p><a href="../index.php">Home</a></p>';
+$conn->close();
 ?>
 </body>
 </html>
