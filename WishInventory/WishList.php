@@ -17,7 +17,7 @@
     <?php include_once("../db_connect.php"); ?>
     <form action="WishList.php" method="post">
         <select name="wishLoc" id="wishLoc">
-            <option value="" hidden selected="selected">Wish Item Location</option>
+            <option value="" selected="selected">Wish Item Location</option>
             <?php
                 $sql1 = "SELECT DISTINCT location FROM ffc_wish_inventory ORDER BY location";
                 $resL = $conn->query($sql1);
