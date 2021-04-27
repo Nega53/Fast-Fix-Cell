@@ -14,7 +14,7 @@
 <!-- FILTERING OPTION FOR EACH COLUMN
     HAVE AN ARRAY OF EACH COLUMN NAMES -->
 <?php include_once("../db_connect.php"); ?>
-<form action="ffcInventoryList.php" method="get">
+<form action="ffcInventoryList.php" method="post">
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
         <?php
@@ -64,7 +64,7 @@ echo '<script>console.log("Phone Model Value: '.$_REQUEST['ffcPhone'].'")</scrip
 echo '<script>console.log("Accessory Type Value: '.$_REQUEST['ffcAcc'].'")</script>';
 
 //Based on Filters select the appropiate sql command
-if(isset($_REQUEST['ffcBrand']) && isset($_REQUEST['ffcPhone']) && isset($_REQUEST['ffcAcc'])){
+if(!empty($_REQUEST['ffcBrand']) && !empty($_REQUEST['ffcPhone']) && !empty($_REQUEST['ffcAcc'])){
     $sql = "SELECT * FROM ffc_inventory WHERE brand = ".$_REQUEST['ffcBrand']." AND phone_model = ".$_REQUEST['ffcPhone']." AND ".$_REQUEST['ffcAcc']." ORDER BY brand, phone_model, accessory_type";
 }
 else{
