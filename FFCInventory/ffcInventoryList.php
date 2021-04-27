@@ -56,31 +56,16 @@
 <body>
 
 <?php
-$sql = "SELECT item_ID, item_name, brand, phone_model, accessory_type, item_quantity FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
+$sql;
+//Based on Filters select the appropiate sql command
+if(isset($_GET['ffcBrand']) && isset($_GET['ffcPhone']) && isset($_GET['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE brand = ".$_GET['ffcBrand']." ORDER BY brand, phone_model, accessory_type";
+}
+else{
+    $sql = "SELECT item_ID, item_name, brand, phone_model, accessory_type, item_quantity FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
+}
 $result = $conn->query($sql);
-
 $conn->close();
-?>
-<?php
-    // $brand = "";
-    // $phone = "";
-    // $acc = "";
-
-    // if(isset($_POST['ffcBrand'])){
-    //     $brand = $_POST['ffcBrand'];
-    // }
-    // if(isset($_POST['ffcPhone'])){
-    //     $phone = $_POST['ffcPhone'];
-    // }
-    // if(isset($_POST['ffcAcc'])){
-    //     $acc = $_POST['ffcAcc'];
-    // }
-
-    // //Filtering
-    // if(!empty($brand)){
-
-    // }
-    
 ?>
     <table id="InventoryTable" class="table table-striped table-bordered table-hover">
         <thead>
