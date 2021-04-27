@@ -14,14 +14,36 @@
             });
         </script>
     </div>
+    <?php include_once("../db_connect.php"); ?>
+    <form action="WishList.php" method="post">
+        <select name="wishLoc" id="wishLoc">
+            <option value="" hidden selected="selected">Wish Item Location</option>
+            <?php
+                $sql1 = "SELECT DISTINCT location FROM ffc_wish_inventory ORDER BY location";
+                $resL = $conn->query($sql1);
+
+                while($itemW = mysqli_fetch_assoc($resL)){
+                    echo '<option value="'.$itemW['wishLoc'].'">'.$itemW['wishLoc'].'</option>';
+                }
+            ?>
+        </select>
+        <input name="filter" type="submit" value="Filter"/>
+    </form>
     <title>Wish Inventory List</title>
 </head>
 <body>
-
 <?php
-include_once("../db_connect.php");
 
-$sql = "SELECT customer_ID, location FROM ffc_wish_inventory";
+$sql;
+
+//Filter Wish Location
+//If location is selected
+if(!empty($_REQUEST['wishLoc'])){
+    $sql = "SELECT * FROM ffc_wish_inventory WHERE location = '".$_REQUEST['wishLoc']."'";
+}
+else{
+    $sql = "SELECT * ffc_wish_inventory";
+}
 $result = $conn->query($sql);
 
 $conn->close();
