@@ -60,6 +60,8 @@ $sql;
 
 //Testing variables
 echo '<script>console.log("Brand Value: '.$_REQUEST['ffcBrand'].'")</script>';
+echo '<script>console.log("Phone Model Value: '.$_REQUEST['ffcPhone'].'")</script>';
+echo '<script>console.log("Accessory Type Value: '.$_REQUEST['ffcAcc'].'")</script>';
 
 //Based on Filters select the appropiate sql command
 if(isset($_REQUEST['ffcBrand']) && isset($_REQUEST['ffcPhone']) && isset($_REQUEST['ffcAcc'])){
@@ -68,6 +70,8 @@ if(isset($_REQUEST['ffcBrand']) && isset($_REQUEST['ffcPhone']) && isset($_REQUE
 else{
     $sql = "SELECT * FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
 }
+
+echo '<script>console.log("SQL command: '.$sql.'")</script>';
 $result = $conn->query($sql);
 $conn->close();
 ?>
