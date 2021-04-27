@@ -42,7 +42,7 @@ if(!empty($_REQUEST['wishLoc'])){
     $sql = "SELECT * FROM ffc_wish_inventory WHERE location = '".$_REQUEST['wishLoc']."'";
 }
 else{
-    $sql = "SELECT * ffc_wish_inventory";
+    $sql = "SELECT * FROM ffc_wish_inventory";
 }
 $result = $conn->query($sql);
 
