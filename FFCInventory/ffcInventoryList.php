@@ -62,11 +62,11 @@ $sql;
 echo '<script>console.log("Brand Value: '.$_REQUEST['ffcBrand'].'")</script>';
 
 //Based on Filters select the appropiate sql command
-if(isset($_GET['ffcBrand']) && isset($_GET['ffcPhone']) && isset($_GET['ffcAcc'])){
-    $sql = "SELECT * FROM ffc_inventory WHERE brand = ".$_GET['ffcBrand']." ORDER BY brand, phone_model, accessory_type";
+if(isset($_REQUEST['ffcBrand']) && isset($_REQUEST['ffcPhone']) && isset($_REQUEST['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE brand = ".$_REQUEST['ffcBrand']."AND phone_model = ".$_REQUEST['ffcPhone']."AND ".$_REQUEST['ffcAcc']." ORDER BY brand, phone_model, accessory_type";
 }
 else{
-    $sql = "SELECT item_ID, item_name, brand, phone_model, accessory_type, item_quantity FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
+    $sql = "SELECT * FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
 }
 $result = $conn->query($sql);
 $conn->close();
