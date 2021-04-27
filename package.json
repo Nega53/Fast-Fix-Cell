@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Nega53/Fast-Fix-Cell#readme",
   "description": "",
   "dependencies": {
+    "qr-image": "^3.2.0",
+    "qrcode": "^1.4.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-qr-svg": "^2.3.0"
