@@ -14,7 +14,7 @@
 <!-- FILTERING OPTION FOR EACH COLUMN
     HAVE AN ARRAY OF EACH COLUMN NAMES -->
 <?php include_once("../db_connect.php"); ?>
-<form action="ffcInventoryList.php" method="post">
+<form action="ffcInventoryList.php" method="get">
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
         <?php
