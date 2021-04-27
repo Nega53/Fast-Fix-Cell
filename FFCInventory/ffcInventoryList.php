@@ -59,7 +59,7 @@
 $sql;
 
 //Testing variables
-echo '<script>console.log("Brand Value: '.$_GET['ffcBrand'].'")</script>';
+echo '<script>console.log("Brand Value: '.$_REQUEST['ffcBrand'].'")</script>';
 
 //Based on Filters select the appropiate sql command
 if(isset($_GET['ffcBrand']) && isset($_GET['ffcPhone']) && isset($_GET['ffcAcc'])){
