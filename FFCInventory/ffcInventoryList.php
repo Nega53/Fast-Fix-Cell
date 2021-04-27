@@ -11,8 +11,6 @@
             });
         </script>
 </div>
-<!-- FILTERING OPTION FOR EACH COLUMN
-    HAVE AN ARRAY OF EACH COLUMN NAMES -->
 <?php include_once("../db_connect.php"); ?>
 <form action="ffcInventoryList.php" method="post">
     <select name="ffcBrand" id="ffcBrand">
@@ -50,22 +48,40 @@
     </select>
     <input name="filter" type="submit" value="Filter"/>
 </form>
-<!-- -->
 <title>Fast Fix Cell Inventory List</title>
 </head>
 <body>
 
 <?php
 $sql;
-
-//Testing variables
-echo '<script>console.log("Brand Value: '.$_REQUEST['ffcBrand'].'")</script>';
-echo '<script>console.log("Phone Model Value: '.$_REQUEST['ffcPhone'].'")</script>';
-echo '<script>console.log("Accessory Type Value: '.$_REQUEST['ffcAcc'].'")</script>';
-
 //Based on Filters select the appropiate sql command
+//All three filters are filled
 if(!empty($_REQUEST['ffcBrand']) && !empty($_REQUEST['ffcPhone']) && !empty($_REQUEST['ffcAcc'])){
-    $sql = "SELECT * FROM ffc_inventory WHERE brand = '".$_REQUEST['ffcBrand']."' AND phone_model = '".$_REQUEST['ffcPhone']."' AND '".$_REQUEST['ffcAcc']."' ORDER BY brand, phone_model, accessory_type";
+    $sql = "SELECT * FROM ffc_inventory WHERE brand = '".$_REQUEST['ffcBrand']."' AND phone_model = '".$_REQUEST['ffcPhone']."' AND accessory_type = '".$_REQUEST['ffcAcc']."' ORDER BY brand, phone_model, accessory_type";
+}
+//Brand and phone model are filled and acc is empty
+else if(!empty($_REQUEST['ffcBrand']) && !empty($_REQUEST['ffcPhone']) && empty($_REQUEST['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE brand = '".$_REQUEST['ffcBrand']."' AND phone_model = '".$_REQUEST['ffcPhone']."' ORDER BY brand, phone_model, accessory_type";
+}
+//Brand and Acc is filled and phone model is empty
+else if(!empty($_REQUEST['ffcBrand']) && empty($_REQUEST['ffcPhone']) && !empty($_REQUEST['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE brand = '".$_REQUEST['ffcBrand']."' AND accessory_type = '".$_REQUEST['ffcAcc']."' ORDER BY brand, phone_model, accessory_type";
+}
+//Phone model and Acc is filled and brand is empty
+else if(empty($_REQUEST['ffcBrand']) && !empty($_REQUEST['ffcPhone']) && !empty($_REQUEST['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE phone_model = '".$_REQUEST['ffcPhone']."' AND accessory_type = '".$_REQUEST['ffcAcc']."' ORDER BY brand, phone_model, accessory_type";
+}
+//Only brand is filled
+else if(!empty($_REQUEST['ffcBrand']) && empty($_REQUEST['ffcPhone']) && empty($_REQUEST['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE brand = '".$_REQUEST['ffcBrand']."' ORDER BY brand, phone_model, accessory_type";
+}
+//Only phone model is filled
+else if(empty($_REQUEST['ffcBrand']) && !empty($_REQUEST['ffcPhone']) && empty($_REQUEST['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE phone_model = '".$_REQUEST['ffcPhone']."' ORDER BY brand, phone_model, accessory_type";
+}
+//Only acc is filled
+else if(empty($_REQUEST['ffcBrand']) && empty($_REQUEST['ffcPhone']) && !empty($_REQUEST['ffcAcc'])){
+    $sql = "SELECT * FROM ffc_inventory WHERE accessory_type = '".$_REQUEST['ffcAcc']."' ORDER BY brand, phone_model, accessory_type";
 }
 else{
     $sql = "SELECT * FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
