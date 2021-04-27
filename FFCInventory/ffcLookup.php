@@ -25,6 +25,7 @@ $item_ID = $conn->real_escape_string($_REQUEST['item_ID']);
 
 //Attempt to fetch data from table
 $sql = "SELECT * FROM ffc_inventory WHERE item_ID = '".$item_ID."'";
+echo '<script>console.log("SQL Command: '.$sql.'")</script>';
 $result = $conn->query($sql);
 ?>
 <div>
