@@ -17,13 +17,13 @@
     <?php include_once("../db_connect.php"); ?>
     <form action="WishList.php" method="post">
         <select name="wishLoc" id="wishLoc">
-            <option value="" selected="selected">Wish Item Location</option>
+            <option value="" hidden selected="selected">Wish Item Location</option>
             <?php
                 $sql1 = "SELECT DISTINCT location FROM ffc_wish_inventory ORDER BY location";
                 $resL = $conn->query($sql1);
 
                 while($itemW = mysqli_fetch_assoc($resL)){
-                    echo '<option value="'.$itemW['wishLoc'].'">'.$itemW['wishLoc'].'</option>';
+                    echo '<option value="'.$itemW['location'].'">'.$itemW['location'].'</option>';
                 }
             ?>
         </select>
