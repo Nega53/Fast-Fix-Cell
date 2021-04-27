@@ -57,6 +57,10 @@
 
 <?php
 $sql;
+
+//Testing variables
+echo '<script>console.log("Brand Value: '.$_GET['ffcBrand'].'")</script>';
+
 //Based on Filters select the appropiate sql command
 if(isset($_GET['ffcBrand']) && isset($_GET['ffcPhone']) && isset($_GET['ffcAcc'])){
     $sql = "SELECT * FROM ffc_inventory WHERE brand = ".$_GET['ffcBrand']." ORDER BY brand, phone_model, accessory_type";
