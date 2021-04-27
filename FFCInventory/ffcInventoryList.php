@@ -65,7 +65,7 @@ echo '<script>console.log("Accessory Type Value: '.$_REQUEST['ffcAcc'].'")</scri
 
 //Based on Filters select the appropiate sql command
 if(!empty($_REQUEST['ffcBrand']) && !empty($_REQUEST['ffcPhone']) && !empty($_REQUEST['ffcAcc'])){
-    $sql = "SELECT * FROM ffc_inventory WHERE brand = ".$_REQUEST['ffcBrand']." AND phone_model = ".$_REQUEST['ffcPhone']." AND ".$_REQUEST['ffcAcc']." ORDER BY brand, phone_model, accessory_type";
+    $sql = "SELECT * FROM ffc_inventory WHERE brand = ".$conn->real_escape_string($_REQUEST['ffcBrand'])." AND phone_model = ".$conn->real_escape_string($_REQUEST['ffcPhone'])." AND ".$conn->real_escape_string($_REQUEST['ffcAcc'])." ORDER BY brand, phone_model, accessory_type";
 }
 else{
     $sql = "SELECT * FROM ffc_inventory ORDER BY brand, phone_model, accessory_type";
