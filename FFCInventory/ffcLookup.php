@@ -31,12 +31,13 @@ $result = $conn->query($sql);
 <table id="InventoryTable" class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
-            <th>Barcode/QR Code</th>
+            <th>Barcode</th>
             <th>Item Name</th>
             <th>Phone Brand</th>
             <th>Phone Model</th>
             <th>Accessory Type</th>
             <th>Item Quantity</th>
+            <th>QR Code</th>
         </tr>
     </thead>
     <tbody>
@@ -48,6 +49,7 @@ $result = $conn->query($sql);
                 <td><?php echo $items['phone_model']; ?></td>
                 <td><?php echo $items['accessory_type']; ?></td>
                 <td><?php echo $items['item_quantity']; ?></td>
+                <td><?php echo '<img src="ffcQRCode.php?item_ID='.$items['item_ID'].'">' ?></td>
             </tr>
         <?php } ?>
     </tbody>

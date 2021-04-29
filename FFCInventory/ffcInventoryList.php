@@ -105,19 +105,6 @@ $conn->close();
         </thead>
         <tbody>
             <?php while($items = mysqli_fetch_assoc($result)){?>
-                <?php
-                    // if($items['qr_code'] === null || empty($items['qr_code'])){
-                    //     //Crete Array to store each JSON then iterate through Array and store JSON in table
-                    //     $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
-                    //     "model"=>$items['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
-
-                    //     $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
-                    //     //echo "<script>console.log($text);</script>";
-
-                    //     $tempArr = array_push($tempArr, $jsonobj);
-                    //     //echo "<script>console.log('".json_encode($tempArr)."');</script>";
-                    // }
-                ?>
                 <tr id="<?php echo $items['item_ID']; ?>">
                     <td><?php echo $items['item_ID']; ?></td>
                     <td><?php echo $items['item_name']; ?></td>
@@ -125,27 +112,9 @@ $conn->close();
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
-                    
                     <td><?php echo '<img src="ffcQRCode.php?item_ID='.$items['item_ID'].'">' ?></td>
                 </tr>
             <?php } ?>
-            <?php
-                //Update functions here
-                //set a flag to access code
-                //echo "<script>console.log('".json_encode($tempArr)."');</script>";
-
-                /*
-                    $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
-
-                    if($conn->query($sqlI) === true){
-                        echo "<script>console.log('Object Stored');</script>";
-                    } else {
-                        echo "Unable to execute $sql." . $conn->error;
-                    }
-
-                    $conn->close();
-                */
-            ?>
         </tbody>
     </table>
 </body>
