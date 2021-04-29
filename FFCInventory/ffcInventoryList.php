@@ -113,7 +113,7 @@ $conn->close();
                         $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
                         //echo "<script>console.log($text);</script>";
 
-                        array_push($tempArr, $text);
+                        $tempArr = array_merge($tempArr, $text);
                     }
                 ?>
                 <tr id="<?php echo $items['item_ID']; ?>">
