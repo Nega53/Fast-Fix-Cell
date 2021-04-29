@@ -106,13 +106,13 @@ $conn->close();
                 <?php
                     if($items['qr_code'] === null || empty($items['qr_code'])){
                         // //Create json and insert into table
-                        // $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
-                        // "model"=>$items['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
+                        $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
+                        "model"=>$items['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
 
-                        // $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
+                        $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
                         // echo "<script>console.log($text)</script>";
 
-                        // $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
+                        $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
                         
                         // if($conn->query($sqlI) === true){
                         //     echo "<script>console.log('Object Stored')</script>";
@@ -121,7 +121,7 @@ $conn->close();
                         // }
 
                         // $conn->close();
-                        echo "<script>console.log('Entered')</script>";
+                        echo "<script>console.log($sqlI)</script>";
                     }
                 ?>
                 <tr id="<?php echo $items['id']; ?>">
