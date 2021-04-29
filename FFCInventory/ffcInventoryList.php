@@ -54,7 +54,6 @@ include_once('phpqrcode/qrconfig.php');
 <title>Fast Fix Cell Inventory List</title>
 </head>
 <body>
-
 <?php
 $sql;
 //Based on Filters select the appropiate sql command
@@ -107,13 +106,29 @@ $conn->close();
         </thead>
         <tbody>
             <?php while($items = mysqli_fetch_assoc($result)){?>
-                <?php 
-                    $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
+                <?php
+                    //Create file path for image
+                    $tempDir = '../QRCodes';
+                    $fileName = $items['item_ID'] . '.png';
+
+                    //File Paths
+                    $pngAbsoluteFilePath = $tempDir . $fileName;
+                    $urlRelatvieFilePath = '../QRCodes' . $fileName;
+
+                    if(!file_exists($pngAbsoluteFilePath)){
+                        $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
                         "model"=>['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
                         
-                    $text = json_encode($jsonobj);
+                        $text = json_encode($jsonobj);
+                        echo "<script>console.log($text)</script>";
 
-                    echo "<script>console.log($text)</script>";
+                        QRCode::png($text, $pngAbsoluteFilePath);
+
+                        echo '<script>console.log("File Generated", $text)</script>';
+                    }
+                    else {
+                        echo '<script>console.log("File Already Generated.")</script>';
+                    }
                 ?>
                 <tr id="<?php echo $items['id']; ?>">
                     <td><?php echo $items['item_ID']; ?></td>
@@ -122,7 +137,7 @@ $conn->close();
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
-                    <td><?php QRCode::png($text); ?></td>
+                    <td><img src="'.$urlRelatvieFilePath.'"/></td>
                 </tr>
             <?php } ?>
         </tbody>
