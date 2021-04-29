@@ -56,7 +56,7 @@ $conn->close();
     </thead>
     <tbody>
         <?php while($witems = mysqli_fetch_assoc($result)){?>
-            <tr id="<?php echo $witems ['id']; ?>">
+            <tr id="<?php echo $witems ['customer_ID']; ?>">
                 <td><?php echo $witems['customer_ID']; ?></td>
                 <td><?php echo $witems['location']; ?></td>
             </tr>
