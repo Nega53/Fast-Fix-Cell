@@ -105,7 +105,15 @@ $conn->close();
             <?php while($items = mysqli_fetch_assoc($result)){?>
                 <?php
                     if($items['qr_code'] === null || empty($items['qr_code'])){
-                        include 'ffcUpdate.php';
+                        $tempArr = array();
+                        //Crete Array to store each JSON then iterate through Array and store JSON in table
+                        $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
+                        "model"=>$items['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
+
+                        $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
+                        echo "<script>console.log($text);</script>";
+
+                        array_push($tempArr, $text);
                     }
                 ?>
                 <tr id="<?php echo $items['item_ID']; ?>">
@@ -117,6 +125,22 @@ $conn->close();
                     <td><?php echo $items['item_quantity']; ?></td>
                 </tr>
             <?php } ?>
+            <?php
+                //Update functions here
+                echo "<script>console.log($tempArr);</script>";
+
+                /*
+                    $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
+
+                    if($conn->query($sqlI) === true){
+                        echo "<script>console.log('Object Stored');</script>";
+                    } else {
+                        echo "Unable to execute $sql." . $conn->error;
+                    }
+
+                    $conn->close();
+                */
+            ?>
         </tbody>
     </table>
 </body>
