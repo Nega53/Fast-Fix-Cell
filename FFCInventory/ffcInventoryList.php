@@ -11,9 +11,7 @@
             });
         </script>
 </div>
-<?php include_once("../db_connect.php");
-include_once('phpqrcode/qrlib.php');
-?>
+<?php include_once("../db_connect.php"); ?>
 <form action="ffcInventoryList.php" method="post">
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
@@ -112,11 +110,12 @@ $conn->close();
                         "model"=>['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
 
                         $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
+                        echo "<script>console.log($text)</script>";
 
                         $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
                         
                         if($conn->query($sqlI) === true){
-                            echo "<script>Object Stored.</script>";
+                            echo "<script>console.log('Object Stored').</script>";
                         } else {
                             echo "Unable to execute $sql." . $conn->error;
                         }
