@@ -105,13 +105,13 @@ $conn->close();
             <?php while($items = mysqli_fetch_assoc($result)){?>
                 <?php
                     if($items['qr_code'] === null || empty($items['qr_code'])){
-                        $tempArr = array();
+                        $tempArr = array("qrcode", "name", "brand", "model", "type", "quantity");
                         //Crete Array to store each JSON then iterate through Array and store JSON in table
                         $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
                         "model"=>$items['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
 
                         $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
-                        echo "<script>console.log($text);</script>";
+                        //echo "<script>console.log($text);</script>";
 
                         array_push($tempArr, $text);
                     }
