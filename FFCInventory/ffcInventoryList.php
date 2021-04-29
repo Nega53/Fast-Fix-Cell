@@ -11,7 +11,9 @@
             });
         </script>
 </div>
-<?php include_once("../db_connect.php"); ?>
+<?php include_once("../db_connect.php");
+include 'phpqrcode/qrlib.php'; 
+?>
 <form action="ffcInventoryList.php" method="post">
     <select name="ffcBrand" id="ffcBrand">
         <option value="" selected="selected">Phone Brand</option>
@@ -104,13 +106,20 @@ $conn->close();
         </thead>
         <tbody>
             <?php while($items = mysqli_fetch_assoc($result)){?>
-                <tr id="<?php echo $items ['id']; ?>">
+                <?php
+                    $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], 
+                    "brand"=>$items['brand'], "model"=>['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
+
+                    $text = json_encode($jsonobj);
+                ?>
+                <tr id="<?php echo $items['id']; ?>">
                     <td><?php echo $items['item_ID']; ?></td>
                     <td><?php echo $items['item_name']; ?></td>
                     <td><?php echo $items['brand']; ?></td>
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
+                    <td><?php echo QRCode::png($text); ?></td>
                 </tr>
             <?php } ?>
         </tbody>
