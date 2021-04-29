@@ -114,7 +114,7 @@ $conn->close();
                         //echo "<script>console.log($text);</script>";
 
                         $tempArr = array_merge($tempArr, $jsonobj);
-                        echo "<script>console.log($tempArr);</script>";
+                        echo "<script>console.log('".json_encode($tempArr)."');</script>";
                     }
                 ?>
                 <tr id="<?php echo $items['item_ID']; ?>">
