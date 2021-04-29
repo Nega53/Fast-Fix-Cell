@@ -107,7 +107,7 @@ $conn->close();
                     if($items['qr_code'] === null || empty($items['qr_code'])){
                         //Create json and insert into table
                         $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
-                        "model"=>['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
+                        "model"=>$items['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
 
                         $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
                         echo "<script>console.log($text)</script>";
