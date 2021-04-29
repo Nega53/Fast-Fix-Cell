@@ -53,6 +53,7 @@
 <body>
 <?php
 $sql;
+$tempArr = array();
 //Based on Filters select the appropiate sql command
 //All three filters are filled
 if(!empty($_REQUEST['ffcBrand']) && !empty($_REQUEST['ffcPhone']) && !empty($_REQUEST['ffcAcc'])){
@@ -105,7 +106,6 @@ $conn->close();
             <?php while($items = mysqli_fetch_assoc($result)){?>
                 <?php
                     if($items['qr_code'] === null || empty($items['qr_code'])){
-                        $tempArr = array("qrcode", "name", "brand", "model", "type", "quantity");
                         //Crete Array to store each JSON then iterate through Array and store JSON in table
                         $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
                         "model"=>$items['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
@@ -127,6 +127,7 @@ $conn->close();
             <?php } ?>
             <?php
                 //Update functions here
+                //set a flag to access code
                 echo "<script>console.log($tempArr);</script>";
 
                 /*
