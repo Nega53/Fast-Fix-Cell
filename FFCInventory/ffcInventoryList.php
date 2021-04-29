@@ -114,7 +114,7 @@ $conn->close();
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
-                    <td><img style="display:block;" width="100%" height="100%" src="../qrgen.php"/></td>
+                    <td><a href="../qrgen.php">QR Code</a></td>
                 </tr>
             <?php } ?>
         </tbody>
