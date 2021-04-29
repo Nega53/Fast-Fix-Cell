@@ -13,7 +13,6 @@
 </div>
 <?php include_once("../db_connect.php");
 include_once('phpqrcode/qrlib.php');
-include_once('phpqrcode/qrconfig.php');
 ?>
 <form action="ffcInventoryList.php" method="post">
     <select name="ffcBrand" id="ffcBrand">
@@ -107,27 +106,22 @@ $conn->close();
         <tbody>
             <?php while($items = mysqli_fetch_assoc($result)){?>
                 <?php
-                    //Create file path for image
-                    $tempDir = '../QRCodes';
-                    $fileName = $items['item_ID'] . '.png';
-
-                    //File Paths
-                    $pngAbsoluteFilePath = $tempDir . $fileName;
-                    $urlRelatvieFilePath = '../QRCodes' . $fileName;
-
-                    if(!file_exists($pngAbsoluteFilePath)){
+                    if($items['qr_code'] === null || empty($items['qr_code'])){
+                        //Create json and insert into table
                         $jsonobj = array("qrcode"=>$items['item_ID'], "name"=>$items['item_name'], "brand"=>$items['brand'],
                         "model"=>['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
+
+                        $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
+
+                        $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
                         
-                        $text = json_encode($jsonobj);
-                        echo "<script>console.log($text)</script>";
+                        if($conn->query($sqlI) === true){
+                            echo "<script>Object Stored.</script>";
+                        } else {
+                            echo "Unable to execute $sql." . $conn->error;
+                        }
 
-                        QRCode::png($text, $pngAbsoluteFilePath);
-
-                        echo '<script>console.log("File Generated", $text)</script>';
-                    }
-                    else {
-                        echo '<script>console.log("File Already Generated.")</script>';
+                        $conn->close();
                     }
                 ?>
                 <tr id="<?php echo $items['id']; ?>">
@@ -137,7 +131,6 @@ $conn->close();
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
-                    <td><img src="'.$urlRelatvieFilePath.'"/></td>
                 </tr>
             <?php } ?>
         </tbody>
