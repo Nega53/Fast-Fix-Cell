@@ -125,7 +125,8 @@ $conn->close();
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
-                    <td><?php echo '<a href="ffcQRCode.php?item_ID='.$items['item_ID'].'">Generate QR Code</a>' ?></td>
+                    
+                    <td><?php echo '<img src="ffcQRCode.php?item_ID='.$items['item_ID'].'">' ?></td>
                 </tr>
             <?php } ?>
             <?php
