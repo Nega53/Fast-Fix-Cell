@@ -113,7 +113,7 @@ $conn->close();
                         $text = json_encode($jsonobj, JSON_FORCE_OBJECT);
                         //echo "<script>console.log($text);</script>";
 
-                        $tempArr = array_merge($tempArr, $jsonobj);
+                        $tempArr = array_merge($tempArr, $text);
                         echo "<script>console.log('".json_encode($tempArr)."');</script>";
                     }
                 ?>
@@ -129,7 +129,7 @@ $conn->close();
             <?php
                 //Update functions here
                 //set a flag to access code
-                echo "<script>console.log($tempArr);</script>";
+                echo "<script>console.log('".json_encode($tempArr)."');</script>";
 
                 /*
                     $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
