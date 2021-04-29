@@ -23,6 +23,5 @@
 <body>
     <h2><b>Fast Fix Cell Inventory System</b></h2>
     <p>Inventory Site made to access the Fast Fix Cell Repair shop Database.</p>
-    <a href="test.php">QR Code Test</a>
 </body>
 </html>
