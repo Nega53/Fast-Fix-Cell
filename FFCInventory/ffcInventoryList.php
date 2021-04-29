@@ -121,6 +121,7 @@ $conn->close();
                         // }
 
                         // $conn->close();
+                        echo "<script>console.log('Entered').</script>";
                     }
                 ?>
                 <tr id="<?php echo $items['id']; ?>">
