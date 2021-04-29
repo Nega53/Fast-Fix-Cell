@@ -94,12 +94,13 @@ $conn->close();
     <table id="InventoryTable" class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th>Barcode/QR Code</th>
+                <th>Barcode</th>
                 <th>Item Name</th>
                 <th>Phone Brand</th>
                 <th>Phone Model</th>
                 <th>Accessory Type</th>
                 <th>Item Quantity</th>
+                <th>QR Codes</th>
             </tr>
         </thead>
         <tbody>
@@ -124,7 +125,7 @@ $conn->close();
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
-                    <td><a href="ffcQRCode.php?item_ID='.$items['item_ID'].'">Generate QR Code</a></td>
+                    <td><?php echo '<a href="ffcQRCode.php?item_ID='.$items['item_ID'].'">Generate QR Code</a>' ?></td>
                 </tr>
             <?php } ?>
             <?php
