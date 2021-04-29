@@ -111,6 +111,7 @@ $conn->close();
                     "brand"=>$items['brand'], "model"=>['phone_model'], "type"=>$items['accessory_type'], "quantity"=>$items['item_quantity']);
 
                     $text = json_encode($jsonobj);
+                    echo "<script>console.log($text)</script>";
                 ?>
                 <tr id="<?php echo $items['id']; ?>">
                     <td><?php echo $items['item_ID']; ?></td>
@@ -119,7 +120,6 @@ $conn->close();
                     <td><?php echo $items['phone_model']; ?></td>
                     <td><?php echo $items['accessory_type']; ?></td>
                     <td><?php echo $items['item_quantity']; ?></td>
-                    <td><?php echo QRCode::png($text); ?></td>
                 </tr>
             <?php } ?>
         </tbody>
