@@ -115,13 +115,13 @@ $conn->close();
                         // $sqlI = "UPDATE ffc_inventory SET qr_code = '".$text."' WHERE item_ID = '".$items['item_ID']."'";
                         
                         // if($conn->query($sqlI) === true){
-                        //     echo "<script>console.log('Object Stored').</script>";
+                        //     echo "<script>console.log('Object Stored')</script>";
                         // } else {
                         //     echo "Unable to execute $sql." . $conn->error;
                         // }
 
                         // $conn->close();
-                        echo "<script>console.log('Entered').</script>";
+                        echo "<script>console.log('Entered')</script>";
                     }
                 ?>
                 <tr id="<?php echo $items['id']; ?>">
