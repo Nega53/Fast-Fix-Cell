@@ -112,6 +112,7 @@ $conn->close();
 
                     $text = json_encode($jsonobj);
                     echo "<script>console.log($text)</script>";
+                    echo "<script>console.log(QRCode::png($text))</script>";
                 ?>
                 <tr id="<?php echo $items['id']; ?>">
                     <td><?php echo $items['item_ID']; ?></td>
