@@ -15,6 +15,11 @@
             });
         </script>
     </div>
+    <style>
+        dt, dd {
+            text-align: center;
+        }
+    </style>
     <title>Phone Brand Listing</title>
 </head>
 <body>
