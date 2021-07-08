@@ -19,7 +19,7 @@
 </head>
 <body>
 <?php
-    $sql = "SELECT DISTINCT Brand, COUNT(Brand) AS Brand_Total FROM mobile_phones_database_by_teoalida";
+    $sql = "SELECT Brand, COUNT(Brand) AS Brand_Total FROM mobile_phones_database_by_teoalida GROUP BY Brand";
     $result = $conn->query($sql);
     $conn->close();
 ?>
